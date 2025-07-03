@@ -66,7 +66,9 @@ def reg():
         password = request.form['password']
         
         # Zadanie #3. Zadbaj o to, aby dane użytkownika zostały zapisane w bazie danych
-        
+        new_user = User(login=login, password=password)
+        db.session.add(new_user)
+        db.session.commit()
 
         
         return redirect('/')
