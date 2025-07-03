@@ -50,10 +50,12 @@ def login():
             form_password = request.form['password']
             
             # Zadanie #4. Wdrożyć autoryzację
+            users = User.query.all()
+            for user in users:
+                if user.login == form_login and user.password == form_password:
+                    return redirect('/index')
             
-
-
-            
+            return render_template('login.html', error="Nieprawidłowy login lub hasło")
         else:
             return render_template('login.html')
 
